@@ -42,12 +42,8 @@ async function groupExists(groupId:string) {
         Key: {
             id: groupId
         }
-    }).promise
-    if(result.Count>0){
-        return true
-    }else{
-        return false
-    }
+    }).promise()
+    return !!result.Item
 }
 
 async function getImagesPerGroup(groupId:string) {
@@ -57,7 +53,7 @@ async function getImagesPerGroup(groupId:string) {
         ExpressionAttributeValues: {
             ':groupId' : groupId
         },
-        scanIndexForward: false
-    }).promise
-    return result.items
+        ScanIndexForward: false
+    }).promise()
+    return result.Items
 }
