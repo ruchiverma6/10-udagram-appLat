@@ -39,6 +39,7 @@ provider:
         - dynamodb:Scan
         - dynamodb:PutItem
         - dynamodb:GetItem
+        - dynamodb:Query
       Resource: arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.IMAGES_TABLE}
     
 
@@ -59,7 +60,7 @@ functions:
          path:  groups
          cors:  true    
          request:
-          schema:
+          schemas:
            application/json: ${file(models/create-group-request.json)} 
 
   GetImages:
