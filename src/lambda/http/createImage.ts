@@ -50,12 +50,12 @@ async function groupExists(groupId:string) {
 }
 
 async function createImage(groupId:string, imageId:String, event: any) {
-    const timeStamp = new Date().toISOString()
+    const timestamp = new Date().toISOString()
     const newImage = JSON.parse(event.body)
 
     const newItem = {
         groupId,
-        timeStamp,
+        timestamp,
         imageId,
         ...newImage
     }
